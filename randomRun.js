@@ -91,26 +91,30 @@ function refreshAndCheck() {
           new Date().toLocaleString(),
           "待处理元素条件不合格"
         );
-        return;
+      } else {
+        console.log(
+          "[INFO]",
+          new Date().toLocaleString(),
+          "待处理元素条件合格"
+        );
+        console.log("[INFO]", new Date().toLocaleString(), "点击去处理");
+        eval(maxElement.getAttribute("onclick"));
+
+        console.log("[INFO]", new Date().toLocaleString(), "点击确认按钮");
+        var topDiv = document.querySelector(".panel-htop.messager-window");
+        var confirmButton2 = topDiv.querySelector(".l-btn-text");
+        confirmButton2.click();
+
+        console.log(
+          "[INFO]",
+          new Date().toLocaleString(),
+          "点击确认加入公会按钮"
+        );
+        var topDiv2 = document.getElementById("operation_user_tagger_wait_ok");
+        var confirmButton2 = topDiv2.querySelector(".l-btn-text");
+        confirmButton2.click();
+        console.log("[INFO]", new Date().toLocaleString(), "加入公会完成");
       }
-      console.log("[INFO]", new Date().toLocaleString(), "待处理元素条件合格");
-      console.log("[INFO]", new Date().toLocaleString(), "点击去处理");
-      eval(maxElement.getAttribute("onclick"));
-
-      console.log("[INFO]", new Date().toLocaleString(), "点击确认按钮");
-      var topDiv = document.querySelector(".panel-htop.messager-window");
-      var confirmButton2 = topDiv.querySelector(".l-btn-text");
-      confirmButton2.click();
-
-      console.log(
-        "[INFO]",
-        new Date().toLocaleString(),
-        "点击确认加入公会按钮"
-      );
-      var topDiv2 = document.getElementById("operation_user_tagger_wait_ok");
-      var confirmButton2 = topDiv2.querySelector(".l-btn-text");
-      confirmButton2.click();
-      console.log("[INFO]", new Date().toLocaleString(), "加入公会完成");
     } else {
       console.log("[INFO]", new Date().toLocaleString(), "没有最新的待处理");
     }
