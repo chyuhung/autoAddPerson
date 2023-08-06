@@ -69,7 +69,7 @@ function refreshAndCheck() {
       var ReferralGuildID = ReferralGuildText.split(":")[1].trim();
 
       var personOK = false;
-      if (age > 20 && ReferralPersonID != "null" && ReferralGuildID != "null") {
+      if (age > 20 && ReferralPersonID != null && ReferralGuildID != null) {
         personOK = true;
       }
 
