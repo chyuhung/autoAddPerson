@@ -3,6 +3,18 @@ function getRandomTime() {
 }
 
 function refreshAndCheck() {
+  // 检查网页是否存在错误
+  var element = document.querySelector("div.messager-icon.messager-error");
+
+  // 如果找到了指定元素，则退出执行并打印日志
+  if (element) {
+    console.log(
+      "[INFO]",
+      new Date().toLocaleString(),
+      "请先手动处理网页存在的报错"
+    );
+    return;
+  }
   console.log("[INFO]", new Date().toLocaleString(), "点击刷新按钮");
   var confirmButton = document.getElementById(
     "operation_user_tagger_search_btn_search"
