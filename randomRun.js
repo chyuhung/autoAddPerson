@@ -3,13 +3,11 @@ function getRandomTime() {
 }
 
 function refreshAndCheck() {
-  console.log("[INFO]", new Date().toLocaleString(), "-----START-----");
   console.log("[INFO]", new Date().toLocaleString(), "点击刷新按钮");
   var confirmButton = document.getElementById(
     "operation_user_tagger_search_btn_search"
   );
   confirmButton.click();
-  console.log("[INFO]", new Date().toLocaleString(), "刷新执行中...");
 
   setTimeout(function () {
     console.log(
@@ -19,16 +17,10 @@ function refreshAndCheck() {
     );
     var waitElements = document.querySelectorAll('a[onclick*="waitFunction("]');
     var descElements = document.querySelectorAll('a[onclick*="descFunction("]');
-    console.log(
-      "[INFO]",
-      new Date().toLocaleString(),
-      "待处理和处理中元素采集完成"
-    );
 
     var maxParam = -Infinity;
     var maxElement = null;
 
-    console.log("[INFO]", new Date().toLocaleString(), "筛选最新待处理元素");
     for (var i = 0; i < waitElements.length; i++) {
       var element = waitElements[i];
       var onclickValue = element.getAttribute("onclick");
@@ -39,11 +31,7 @@ function refreshAndCheck() {
         maxElement = element;
       }
     }
-    console.log(
-      "[INFO]",
-      new Date().toLocaleString(),
-      "检查最新待处理元素是否更新于所有处理中元素"
-    );
+
     for (var i = 0; i < descElements.length; i++) {
       var element = descElements[i];
       var onclickValue = element.getAttribute("onclick");
@@ -51,11 +39,6 @@ function refreshAndCheck() {
 
       if (firstParam >= maxParam) {
         maxElement = null;
-        console.log(
-          "[INFO]",
-          new Date().toLocaleString(),
-          "最新待处理元素不在队列头部"
-        );
         break;
       }
     }
@@ -69,11 +52,6 @@ function refreshAndCheck() {
         maxElement.getAttribute("onclick")
       );
 
-      console.log(
-        "[INFO]",
-        new Date().toLocaleString(),
-        "检查待处理元素详细信息"
-      );
       var parentElement = maxElement.parentElement.parentElement.parentElement;
       var nextParentElement =
         parentElement.nextElementSibling.children[0].children[0].children[0];
@@ -89,16 +67,6 @@ function refreshAndCheck() {
 
       var ReferralGuildText = splitText[10].trim();
       var ReferralGuildID = ReferralGuildText.split(":")[1].trim();
-      console.log(
-        "[INFO]",
-        new Date().toLocaleString(),
-        "待处理元素年龄:",
-        age,
-        "推荐人ID:",
-        ReferralPersonID,
-        "推荐公会ID:",
-        ReferralGuildID
-      );
 
       var personOK = false;
       if (age > 20 && ReferralPersonID != "null" && ReferralGuildID != "null") {
@@ -131,11 +99,10 @@ function refreshAndCheck() {
       var confirmButton2 = topDiv2.querySelector(".l-btn-text");
       confirmButton2.click();
       console.log("[INFO]", new Date().toLocaleString(), "加入公会完成");
-      console.log("[INFO]", new Date().toLocaleString(), "----- END -----");
     } else {
       console.log("[INFO]", new Date().toLocaleString(), "没有最新的待处理");
-      console.log("[INFO]", new Date().toLocaleString(), "----- END -----");
     }
+    console.log("[INFO]", new Date().toLocaleString(), "----------");
     setTimeout(refreshAndCheck, getRandomTime());
   }, 2000);
 }
