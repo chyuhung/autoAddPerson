@@ -80,8 +80,22 @@ function refreshAndCheck() {
       var ReferralGuildText = splitText[10].trim();
       var ReferralGuildID = ReferralGuildText.split(":")[1].trim();
 
+      console.log("[INFO]", new Date().toLocaleString(), "age:", age);
+
+      console.log(
+        "[INFO]",
+        new Date().toLocaleString(),
+        "ReferralPersonID:",
+        ReferralPersonID
+      );
+      console.log(
+        "[INFO]",
+        new Date().toLocaleString(),
+        "ReferralGuildID:",
+        ReferralGuildID
+      );
       var personOK = false;
-      if (age > 20 && ReferralPersonID != null && ReferralGuildID != null) {
+      if (age > 20 && ReferralPersonID == null && ReferralGuildID == null) {
         personOK = true;
       }
 
