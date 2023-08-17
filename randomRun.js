@@ -95,17 +95,11 @@ function refreshAndCheck() {
         ReferralGuildID
       );
       var personOK = false;
-      if (age > 20 && ReferralPersonID == null && ReferralGuildID == null) {
+      if (age > 20 && ReferralPersonID == "null" && ReferralGuildID == "null") {
         personOK = true;
       }
 
-      if (!personOK) {
-        console.log(
-          "[INFO]",
-          new Date().toLocaleString(),
-          "待处理元素条件不合格"
-        );
-      } else {
+      if (personOK) {
         console.log(
           "[INFO]",
           new Date().toLocaleString(),
@@ -128,6 +122,12 @@ function refreshAndCheck() {
         var confirmButton2 = topDiv2.querySelector(".l-btn-text");
         confirmButton2.click();
         console.log("[INFO]", new Date().toLocaleString(), "加入公会完成");
+      } else {
+        console.log(
+          "[INFO]",
+          new Date().toLocaleString(),
+          "待处理元素条件不合格"
+        );
       }
     } else {
       console.log("[INFO]", new Date().toLocaleString(), "没有最新的待处理");
